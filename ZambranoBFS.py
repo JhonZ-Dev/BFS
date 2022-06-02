@@ -23,4 +23,28 @@ class Grafo:
         self.m_nodo_dirigido = nodo_dirigido
 		
         #Utilizamos un diccionario de datos para implementar un lista de adyacencia.       
-        self.m_adj_lista = {node: set() for node in self.m_nodos}     
+        self.m_adj_lista = {node: set() for node in self.m_nodos} 
+    
+     # Añademos una arista al gráfico
+        """Los arcos también son llamados aristas o líneas. Los nodos suelen usarse para
+         representar objetos y los arcos para representar la relación entre ellos.
+        """
+    def agregar_borde(self, nodo1, nodo2, peso=1):
+        """ 
+            Agregamos un borde a los nodos
+            se envian por parametro la funcion self que en español significa yo, o uno mismo
+            El peso que se inicializa en 1 
+        Args:
+            node1 (_tipo_): _description_
+            node2 (_tipo_): _description_
+            pes (int, optional): _description_. Por defecto es 1.
+        """
+        #Agreamos el objeto self a la lsta adyacente y le agregamos el nodo y el peso
+        self.m_adj_lista[nodo1].add((nodo2, peso)) 
+        """_Sí no agramos un nodo dirigido, se agregará un segundo
+        nodo a la lista adyacente y le agraomso el nodo 1 y el peso _
+        """
+        if not self.m_nodo_dirigido:
+
+            self.m_adj_lista[nodo2].add((nodo1, peso))
+    
