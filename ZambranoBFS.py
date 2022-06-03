@@ -82,3 +82,33 @@ class Grafo:
                 if next_node not in visitado: #Si un vértice adyacente no ha sido visitado, entonces márcalo
                     queue.put(next_node)
                     visitado.add(next_node) #visitarlo y agregarlo en cola
+if __name__ == "__main__":
+    
+        #Instanciamos la clase grafo
+        #Grafo no dirigido y se imprimirá con cinco nodos
+
+    grafoImprime = Grafo(7, nodo_dirigido=False)
+
+
+    # agregamos al grafo para que imprima
+    grafoImprime.agregar_borde(0,3)
+    grafoImprime.agregar_borde(0, 1)
+    grafoImprime.agregar_borde(0, 2)
+    grafoImprime.agregar_borde(2, 4)
+    grafoImprime.agregar_borde(2, 5)
+    grafoImprime.agregar_borde(5, 0)
+    grafoImprime.agregar_borde(4, 6)
+    # grafoImprime.agregar_borde(0, 2)
+    # grafoImprime.agregar_borde(0, 3)
+    # grafoImprime.agregar_borde(2, 4)
+    # grafoImprime.agregar_borde(2, 5)
+    # grafoImprime.agregar_borde(4, 6)
+    # grafoImprime.agregar_borde(5, 0)
+    
+
+    # Imprime la lista de adyacencia en el formulario nodo n: {(nodo, peso)}
+    grafoImprime.print_adj_lista()
+    print ("Lo siguiente es la primera travesía de ancho"
+                    "(empezando por el vértice 0))")
+    grafoImprime.bfs_traversal(0)
+    print()
