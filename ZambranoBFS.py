@@ -47,4 +47,38 @@ class Grafo:
         if not self.m_nodo_dirigido:
 
             self.m_adj_lista[nodo2].add((nodo1, peso))
-    
+    # Procedmos a imprimir la representacion gráfica del nodo
+    def print_adj_lista(self):
+        """_Creams una funcion para imprimir la lista adyacente y se
+        enviar por parámetro a la función self_
+        """
+        #Creamos un ciclo for para cada valor de la variable iteradora.
+        for llave in self.m_adj_lista.keys():
+            #printeamos el nodo   y la lista adyacente con su llave 
+            print("nodo", llave, ": ", self.m_adj_lista[llave])
+
+
+    def bfs_traversal(self, nodo_empieza):
+        """Funcion que va a imprimir a el recoorido,
+        como parámetro el objetivo self y el estado inicial del nodo
+        Args:
+            start_node (_type_): _description_
+        """
+        # Conunto de nodos totalmente visitado, con el fin de evitar bucles
+        visitado = set()
+        queue = Queue() #permite crear y trabajar con colas de manera sencilla.
+        # añadir el nodo_de_inicio a la cola y a la lista de visitas
+        queue.put(nodo_empieza)
+        visitado.add(nodo_empieza)
+        while not queue.empty():
+            #va aun vertice de cola y lo imprime
+            nodo_actual = queue.get() #btiene el nodo actual
+            print(nodo_actual, end = " ") #imprimire 
+          # Obtener todos los vértices adyacentes del
+            # vértice desencolado. Si un adyacente
+            # no ha sido visitado, luego márcalo
+            # visitado y ponerlo en cola
+            for (next_node, weight) in self.m_adj_lista[nodo_actual]: #Obtener todos los vértices adyacentes del
+                if next_node not in visitado: #Si un vértice adyacente no ha sido visitado, entonces márcalo
+                    queue.put(next_node)
+                    visitado.add(next_node) #visitarlo y agregarlo en cola
